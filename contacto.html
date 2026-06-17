@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Mar Gil · margil.es</title>
+<meta name="description" content="Contacto para medios, ponencias y colaboraciones profesionales. Mar Gil, especialista en corrección biológica del espacio.">
+<link rel="canonical" href="https://margil.es/contacto">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #0f0f0d; --grafito: #2a2a26; --piedra: #8c8880;
+    --arena: #e8e2d9; --pergamino: #f5f1eb; --blanco: #fdfcfa;
+    --acento: #4a6b5a; --acento-suave: #d4e0d8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--blanco); color: var(--grafito); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.75; font-size: 17px; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(253,252,250,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--arena); }
+  .nav-logo { font-family: 'EB Garamond', serif; font-size: 1.1rem; letter-spacing: 0.14em; color: var(--negro); text-decoration: none; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--piedra); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--acento); }
+
+  .hero { padding: 9rem 2rem 5rem; max-width: 760px; margin: 0 auto; }
+  .etiqueta { display: inline-block; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--acento); font-weight: 500; margin-bottom: 2rem; }
+  h1 { font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; color: var(--negro); line-height: 1.15; margin-bottom: 1.2rem; }
+  .hero-sub { font-size: 1rem; color: var(--piedra); max-width: 520px; line-height: 1.8; }
+
+  .sep { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--arena), transparent); }
+
+  .contacto-seccion { max-width: 760px; margin: 0 auto; padding: 5rem 2rem 7rem; }
+
+  .tipos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 5rem; }
+  .tipo {
+    border: 1px solid var(--arena); padding: 2.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .tipo:hover { border-color: var(--acento); background: var(--pergamino); }
+  .tipo-icono { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acento); font-weight: 500; margin-bottom: 1rem; display: block; }
+  .tipo h2 { font-family: 'EB Garamond', serif; font-size: 1.2rem; color: var(--negro); margin-bottom: 0.6rem; font-weight: 500; }
+  .tipo p { font-size: 0.88rem; color: var(--piedra); line-height: 1.7; margin-bottom: 0; }
+
+  /* Separador visual antes del formulario */
+  .aviso {
+    background: var(--pergamino);
+    border-left: 2px solid var(--acento);
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    font-size: 0.88rem;
+    color: var(--piedra);
+    line-height: 1.65;
+  }
+  .aviso strong { color: var(--negro); font-weight: 500; }
+
+  /* Formulario */
+  .form-grupo { margin-bottom: 1.8rem; }
+  label { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--piedra); margin-bottom: 0.6rem; font-weight: 500; }
+  input, textarea, select {
+    width: 100%; background: var(--blanco); border: 1px solid var(--arena);
+    padding: 0.9rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    color: var(--negro); font-weight: 300; outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--acento); }
+  textarea { height: 140px; resize: vertical; }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c8880' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+  .btn-enviar {
+    display: inline-block; background: var(--acento); color: var(--blanco);
+    padding: 1rem 2.5rem; font-size: 0.75rem; letter-spacing: 0.14em;
+    text-transform: uppercase; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+    font-weight: 500; transition: opacity 0.2s; margin-top: 0.5rem;
+  }
+  .btn-enviar:hover { opacity: 0.82; }
+
+  .alternativa { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--arena); }
+  .alternativa p { font-size: 0.88rem; color: var(--piedra); line-height: 1.7; margin-bottom: 0.5rem; }
+  .alternativa a { color: var(--acento); text-decoration: none; border-bottom: 1px solid var(--acento-suave); }
+  .alternativa a:hover { border-color: var(--acento); }
+
+  .clientes-bloque { background: var(--negro); padding: 4rem 2rem; text-align: center; }
+  .clientes-bloque p { font-size: 0.92rem; color: rgba(232,226,217,0.75); max-width: 440px; margin: 0 auto 1.5rem; line-height: 1.7; }
+  .clientes-bloque .etiqueta { color: var(--acento-suave); display: block; margin-bottom: 1rem; }
+  .btn-blanco { display: inline-block; border: 1px solid rgba(255,255,255,0.25); color: var(--blanco); padding: 0.85rem 2rem; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.2s; }
+  .btn-blanco:hover { background: rgba(255,255,255,0.08); }
+
+  footer { padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--arena); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--piedra); }
+
+  @media (max-width: 720px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .contacto-seccion { padding: 3rem 1.5rem 5rem; }
+    .tipos-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.8rem; padding: 1.5rem; text-align: center; }
+  }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ContactPage","name":"Contacto — Mar Gil","url":"https://margil.es/contacto","author":{"@type":"Person","name":"Mar Gil","url":"https://margil.es"}}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Mar Gil</a>
+  <ul class="nav-links">
+    <li><a href="/principio">El Principio</a></li>
+    <li><a href="/articulos">Artículos</a></li>
+    <li><a href="/mar-gil">Mar Gil</a></li>
+    <li><a href="https://metodomargil.com">Método →</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <span class="etiqueta">Contacto profesional</span>
+  <h1>Para medios,<br>ponencias<br>y colaboraciones.</h1>
+  <p class="hero-sub">Este formulario es para propuestas profesionales. Para diagnósticos y servicios existe metodomargil.com.</p>
+</header>
+
+<div class="sep"></div>
+
+<section class="contacto-seccion">
+
+  <div class="tipos-grid">
+    <div class="tipo">
+      <span class="tipo-icono">Medios y prensa</span>
+      <h2>Entrevistas y colaboraciones editoriales</h2>
+      <p>Sobre bienestar en el hogar, corrección biológica del espacio y el efecto del entorno sobre el sistema nervioso.</p>
+    </div>
+    <div class="tipo">
+      <span class="tipo-icono">Ponencias</span>
+      <h2>Congresos y eventos profesionales</h2>
+      <p>Arquitectura, interiorismo, salud laboral, bienestar corporativo. El Principio de Configuración Recíproca como contenido de ponencia.</p>
+    </div>
+    <div class="tipo">
+      <span class="tipo-icono">Colaboraciones B2B</span>
+      <h2>Fabricantes y distribuidores</h2>
+      <p>Alianzas con empresas interesadas en integrar la corrección biológica del espacio en su oferta de producto o servicio.</p>
+    </div>
+    <div class="tipo">
+      <span class="tipo-icono">Profesionales del espacio</span>
+      <h2>Arquitectos e interioristas</h2>
+      <p>Para conocer el Método o explorar una colaboración en proyectos que quieran incorporar el bienestar biológico como criterio de diseño.</p>
+    </div>
+  </div>
+
+  <div class="aviso">
+    <strong>Nota:</strong> Este formulario no gestiona consultas de clientes particulares ni solicitudes de diagnóstico del hogar. Para eso está <a href="https://metodomargil.com" style="color: var(--acento);">metodomargil.com</a>.
+  </div>
+
+  <form action="https://metodomargil.com/contacto" method="POST">
+    <div class="form-grid">
+      <div class="form-grupo">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-grupo">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+      </div>
+    </div>
+    <div class="form-grupo">
+      <label for="tipo">Tipo de contacto</label>
+      <select id="tipo" name="tipo" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="medios">Medios y prensa</option>
+        <option value="ponencia">Ponencia o evento</option>
+        <option value="b2b">Colaboración B2B</option>
+        <option value="profesional">Colaboración profesional</option>
+        <option value="otro">Otro</option>
+      </select>
+    </div>
+    <div class="form-grupo">
+      <label for="empresa">Empresa o medio (opcional)</label>
+      <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa o publicación">
+    </div>
+    <div class="form-grupo">
+      <label for="mensaje">Propuesta</label>
+      <textarea id="mensaje" name="mensaje" placeholder="Cuéntame brevemente de qué se trata." required></textarea>
+    </div>
+    <button type="submit" class="btn-enviar">Enviar propuesta</button>
+  </form>
+
+  <div class="alternativa">
+    <p>Si prefieres escribir directamente: <a href="mailto:contacto@margil.es">contacto@margil.es</a></p>
+    <p>Respondo en un plazo de 48–72 horas laborables.</p>
+  </div>
+
+</section>
+
+<!-- PARA CLIENTES -->
+<div class="clientes-bloque">
+  <span class="etiqueta">¿Buscas un diagnóstico para tu hogar?</span>
+  <p>Los servicios, el diagnóstico del hogar y el trabajo con clientes particulares están en metodomargil.com.</p>
+  <a href="https://metodomargil.com" class="btn-blanco">Ir a metodomargil.com →</a>
+</div>
+
+<footer>
+  <span>© 2026 Mar Gil · margil.es</span>
+  <span>Corrección Biológica del Espacio · Aragón, España</span>
+</footer>
+
+</body>
+</html>

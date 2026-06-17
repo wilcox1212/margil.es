@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Quitar extensión .html de las URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Redirigir www a sin www
+RewriteCond %{HTTP_HOST} ^www\.margil\.es [NC]
+RewriteRule ^(.*)$ https://margil.es/$1 [R=301,L]
+
+# Forzar HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

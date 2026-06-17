@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Principio de Configuración Recíproca — Mar Gil</title>
+<link rel="canonical" href="https://margil.es/principio">
+<meta name="description" content="Un sistema de trabajo sobre la relación bidireccional entre el espacio habitado y el sistema nervioso humano. Por Mar Gil, especialista en corrección biológica del espacio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro:     #0f0f0d;
+    --grafito:   #2a2a26;
+    --piedra:    #8c8880;
+    --arena:     #e8e2d9;
+    --pergamino: #f5f1eb;
+    --blanco:    #fdfcfa;
+    --acento:    #4a6b5a; /* verde musgo profundo */
+    --acento-suave: #d4e0d8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--blanco);
+    color: var(--grafito);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 17px;
+  }
+
+  /* ── BARRA SUPERIOR ── */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(253,252,250,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--arena);
+  }
+  .topbar-logo {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: var(--negro);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .topbar-nav {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--piedra);
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 40%, rgba(74,107,90,0.07) 0%, transparent 70%),
+      linear-gradient(180deg, var(--blanco) 0%, var(--pergamino) 100%);
+  }
+
+  /* La firma visual única: línea vertical de acento */
+  .hero-line {
+    position: absolute;
+    left: 3rem;
+    top: 30%;
+    bottom: 5rem;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--acento) 30%, var(--acento) 70%, transparent 100%);
+    opacity: 0.4;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 820px;
+    padding-left: 2rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+  }
+
+  .hero-titulo {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1.12;
+    color: var(--negro);
+    font-weight: 400;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-titulo em {
+    font-style: italic;
+    color: var(--acento);
+  }
+
+  .hero-subtitulo {
+    font-size: 1.05rem;
+    color: var(--piedra);
+    max-width: 560px;
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--piedra);
+  }
+  .hero-meta span { font-weight: 400; }
+
+  /* ── SEPARADOR ── */
+  .separador {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--arena), transparent);
+    margin: 0 auto;
+  }
+
+  /* ── SECCIONES GENERALES ── */
+  .seccion {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .seccion-ancha {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .etiqueta {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--acento);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: var(--negro);
+    line-height: 1.2;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--negro);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  p {
+    color: var(--grafito);
+    margin-bottom: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CITA DESTACADA ── */
+  .cita-bloque {
+    background: var(--pergamino);
+    border-left: 2px solid var(--acento);
+    padding: 2.5rem 3rem;
+    margin: 4rem 0;
+    position: relative;
+  }
+  .cita-bloque p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--negro);
+    margin-bottom: 1rem;
+  }
+  .cita-bloque cite {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--piedra);
+    font-style: normal;
+  }
+
+  /* ── GRID DE PILARES ── */
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0;
+    border: 1px solid var(--arena);
+    margin-top: 3rem;
+  }
+
+  .pilar {
+    padding: 2.5rem;
+    border-right: 1px solid var(--arena);
+    border-bottom: 1px solid var(--arena);
+    transition: background 0.3s ease;
+  }
+  .pilar:hover { background: var(--pergamino); }
+  .pilar:last-child { border-right: none; }
+
+  .pilar-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acento);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .pilar h3 { font-size: 1.1rem; margin-bottom: 0.6rem; }
+
+  .pilar p {
+    font-size: 0.9rem;
+    color: var(--piedra);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ── BLOQUE CIENTÍFICO ── */
+  .ciencia-bloque {
+    background: var(--negro);
+    color: var(--arena);
+    padding: 6rem 3rem;
+  }
+  .ciencia-bloque .seccion { max-width: 760px; margin: 0 auto; padding: 0; }
+  .ciencia-bloque .etiqueta { color: var(--acento-suave); }
+  .ciencia-bloque h2 { color: var(--blanco); }
+  .ciencia-bloque p { color: rgba(232,226,217,0.82); }
+
+  .datos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .dato {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 1.5rem;
+  }
+  .dato-cifra {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.8rem;
+    color: var(--blanco);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .dato-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(232,226,217,0.5);
+    line-height: 1.5;
+  }
+
+  /* ── METODOLOGÍA ── */
+  .metodologia-lista {
+    list-style: none;
+    margin-top: 2.5rem;
+    counter-reset: paso;
+  }
+  .metodologia-lista li {
+    counter-increment: paso;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--arena);
+    align-items: start;
+  }
+  .metodologia-lista li::before {
+    content: counter(paso, decimal-leading-zero);
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--acento);
+    padding-top: 0.1rem;
+  }
+  .metodologia-lista li p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+  .metodologia-lista li strong {
+    display: block;
+    font-weight: 500;
+    color: var(--negro);
+    margin-bottom: 0.3rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+  }
+
+  /* ── CONCLUSIÓN ── */
+  .conclusion {
+    background: var(--acento-suave);
+    padding: 6rem 3rem;
+  }
+  .conclusion .seccion { padding: 0; }
+  .conclusion h2 { color: var(--negro); }
+
+  /* ── FIRMA ── */
+  .firma {
+    padding: 6rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  .firma-linea {
+    width: 40px;
+    height: 1px;
+    background: var(--acento);
+    margin-bottom: 1rem;
+  }
+  .firma-nombre {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--negro);
+    font-style: italic;
+  }
+  .firma-titulo {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--piedra);
+  }
+  .firma-axioma {
+    margin-top: 1.5rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--grafito);
+    max-width: 420px;
+    line-height: 1.6;
+  }
+
+  /* ── CTA PUENTE ── */
+  .cta-puente {
+    background: var(--pergamino);
+    border-top: 1px solid var(--arena);
+    padding: 4rem 3rem;
+    text-align: center;
+  }
+  .cta-puente p {
+    font-size: 0.9rem;
+    color: var(--piedra);
+    max-width: 480px;
+    margin: 0 auto 1.5rem;
+  }
+  .cta-link {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acento);
+    text-decoration: none;
+    border-bottom: 1px solid var(--acento);
+    padding-bottom: 2px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .cta-link:hover { opacity: 0.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--arena);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--piedra);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .topbar { padding: 1rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-line { left: 1.5rem; }
+    .hero-content { padding-left: 1.5rem; }
+    .hero-meta { flex-direction: column; gap: 0.8rem; }
+    .seccion, .seccion-ancha { padding: 4rem 1.5rem; }
+    .ciencia-bloque { padding: 4rem 1.5rem; }
+    .datos-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .pilares-grid { grid-template-columns: 1fr; }
+    .pilar { border-right: none; }
+    .cita-bloque { padding: 2rem 1.5rem; }
+    .conclusion { padding: 4rem 1.5rem; }
+    .firma { padding: 4rem 1.5rem; }
+    .cta-puente { padding: 3rem 1.5rem; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+
+  /* ── ANIMACIONES SUAVES ── */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-content { animation: subir 1s ease both; }
+    @keyframes subir {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"El Principio de Configuración Recíproca","author":{"@type":"Person","name":"Mar Gil","url":"https://margil.es"},"publisher":{"@type":"Organization","name":"margil.es"},"url":"https://margil.es/principio"}
+</script>
+</head>
+<body>
+
+<!-- BARRA SUPERIOR -->
+<nav class="topbar">
+  <a href="/" class="topbar-logo">Mar Gil</a>
+  <span class="topbar-nav">margil.es</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Marco Teórico · Investigación aplicada</p>
+    <h1 class="hero-titulo">El Principio de<br><em>Configuración Recíproca</em></h1>
+    <p class="hero-subtitulo">El espacio no es un contenedor neutral. Es un agente activo que negocia con el sistema nervioso de quien lo habita. Esta es la hipótesis central que sustenta treinta años de práctica y observación.</p>
+    <div class="hero-meta">
+      <span>Mar Gil · especialista</span>
+      <span>Corrección Biológica del Espacio</span>
+      <span>Publicado · 2025</span>
+    </div>
+  </div>
+</section>
+
+<div class="separador"></div>
+
+<!-- INTRODUCCIÓN -->
+<section class="seccion">
+  <span class="etiqueta">Punto de partida</span>
+  <h2>Una pregunta que la arquitectura lleva décadas esquivando</h2>
+  <p>Durante generaciones hemos construido espacios para ser vistos. Los evaluamos por su geometría, su paleta, su coherencia estética. Preguntamos si son bonitos. Raramente preguntamos si son seguros para el sistema nervioso que debe funcionar dentro de ellos.</p>
+  <p>Esta omisión tiene consecuencias. Millones de personas habitan espacios que, a ojos de cualquier revista de interiorismo, son impecables. Y sin embargo no pueden descansar dentro de ellos. No saben por qué. Atribuyen el malestar a su propia incapacidad para disfrutar de lo que tienen.</p>
+  <p>El problema no está en ellas. Está en que nadie les ha explicado que el espacio las está configurando.</p>
+
+  <div class="cita-bloque">
+    <p>"El hogar debería cuidar de quien vive dentro. No decorar su vida: sostenerla."</p>
+    <cite>— Mar Gil · Principio fundacional del Método MarGil</cite>
+  </div>
+
+  <p>El Principio de Configuración Recíproca parte de una observación acumulada durante más de tres décadas de intervención en espacios reales: la relación entre el entorno construido y el ser humano no es unidireccional. No somos solo nosotros quienes configuramos los espacios. Los espacios nos configuran a nosotros.</p>
+  <p>Y lo hacen antes de que seamos conscientes de ello.</p>
+</section>
+
+<div class="separador"></div>
+
+<!-- BLOQUE CIENTÍFICO -->
+<div class="ciencia-bloque">
+  <div class="seccion">
+    <span class="etiqueta">Evidencia de base</span>
+    <h2>Lo que la neurociencia lleva décadas confirmando</h2>
+    <p>La psicología ambiental —disciplina iniciada por Roger Ulrich y Rachel y Stephen Kaplan en los años ochenta— estableció empíricamente que los entornos físicos modulan la respuesta de estrés, la capacidad de atención dirigida y la velocidad de recuperación cognitiva. Sus trabajos con pacientes hospitalarios demostraron que la mera presencia de ventanas con vistas a la naturaleza reducía el tiempo de recuperación postquirúrgica y el consumo de analgésicos.</p>
+    <p>Décadas después, la cronobiología molecular y la investigación en células ganglionares intrínsecamente fotosensibles (ipRGC) ha precisado los mecanismos: la luz —su temperatura, su intensidad, su espectro— sincroniza el reloj circadiano supraquismático y regula la producción de melatonina y cortisol. Un espacio con iluminación inadecuada no es un espacio incómodo: es un espacio que altera la fisiología de quien lo habita.</p>
+    <p>La acústica añade otra capa. Las investigaciones de la Cornell University sobre ruido ambiental crónico en oficinas documentaron aumentos significativos de cortisol urinario, reducción de la motivación de tarea y mayor incidencia de errores cognitivos. El silencio no es una preferencia estética. Es una necesidad neurológica.</p>
+
+    <div class="datos-grid">
+      <div class="dato">
+        <div class="dato-cifra">40%</div>
+        <div class="dato-label">Reducción del tiempo de recuperación con entorno visual adecuado<br><em style="opacity:0.5;font-size:0.9em">(Ulrich, 1984)</em></div>
+      </div>
+      <div class="dato">
+        <div class="dato-cifra">melanopic</div>
+        <div class="dato-label">Parámetro EML aplicado en las 18 atmósferas biológicas del sistema MarGil, alineado con WELL v2</div>
+      </div>
+      <div class="dato">
+        <div class="dato-cifra">30+</div>
+        <div class="dato-label">Años de observación directa en espacios habitados que sustentan el sistema de trabajo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EL PRINCIPIO EXPLICADO -->
+<section class="seccion">
+  <span class="etiqueta">El sistema de trabajo</span>
+  <h2>Qué significa, exactamente, que la relación sea recíproca</h2>
+  <p>La reciprocidad no es metáfora. Es un proceso fisiológico documentable.</p>
+  <p>Cuando una persona entra en un espacio, su sistema nervioso autónomo realiza en milisegundos una evaluación de amenaza o seguridad basada en estímulos ambientales: la calidad de la luz, el nivel de reverberación sonora, la temperatura cromática de las superficies, la escala de los elementos estructurales, la densidad visual del conjunto. Esta evaluación —anterior a cualquier pensamiento consciente— determina el tono vagal predominante y, con él, el estado fisiológico en que el individuo comenzará a operar dentro de ese espacio.</p>
+  <p>El espacio ha actuado primero. Ha tomado decisiones sobre el cuerpo antes de que el cuerpo haya tenido oportunidad de decidir sobre el espacio.</p>
+  <p>La reciprocidad ocurre en el segundo movimiento: una vez establecido ese estado fisiológico, el individuo percibe, interpreta y modifica el espacio desde él. Un estado de activación crónica del sistema simpático produce preferencias estéticas, comportamientos espaciales y decisiones de intervención radicalmente distintos que un estado de dominancia parasimpática. La persona que «nunca está satisfecha con su casa» y la que «se siente bien en cualquier sitio» no tienen personalidades diferentes. Tienen sistemas nerviosos que están respondiendo a entornos diferentes.</p>
+
+  <div class="cita-bloque">
+    <p>"No intervengo sobre el espacio. Intervengo sobre la conversación entre el espacio y el sistema nervioso de quien lo habita."</p>
+    <cite>— Mar Gil</cite>
+  </div>
+
+  <p>El Principio de Configuración Recíproca propone, por tanto, que cualquier intervención sobre el espacio habitado que no considere esta bidireccionalidad es, en el mejor de los casos, incompleta. En el peor, contraproducente.</p>
+</section>
+
+<div class="separador"></div>
+
+<!-- LOS CINCO PILARES -->
+<section class="seccion-ancha">
+  <div style="max-width:760px; margin:0 auto 1rem;">
+    <span class="etiqueta">Aplicación práctica</span>
+    <h2>Los cinco vectores de intervención</h2>
+    <p>El Método MarGil operacionaliza el Principio en cinco dominios de intervención, cada uno correspondiente a un canal sensorial primario a través del cual el espacio negocia con el sistema nervioso.</p>
+  </div>
+  <div class="pilares-grid">
+    <div class="pilar">
+      <span class="pilar-num">Pilar I</span>
+      <h3>Luz Biológica</h3>
+      <p>Calibración espectral y circadiana de la iluminación interior. Parámetros LRV, CCT y EML aplicados a cada zona funcional del espacio según la fase cronobiológica que debe sostener.</p>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">Pilar II</span>
+      <h3>Materia y Textura</h3>
+      <p>Selección de materiales atendiendo a su capacidad de respuesta háptica y visual. La textura no decora: informa al sistema nervioso sobre la naturaleza del entorno.</p>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">Pilar III</span>
+      <h3>Silencio Visual</h3>
+      <p>Reducción calibrada de la carga estimular en el campo visual. El ruido visual es un estresor crónico de baja intensidad que agota los recursos atencionales sin que el habitante lo perciba conscientemente.</p>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">Pilar IV</span>
+      <h3>Geometría del Refugio</h3>
+      <p>Proporciones, escalas y configuraciones espaciales que activan la respuesta de seguridad del sistema nervioso. El refugio no es un concepto poético: es una respuesta neurofisiológica a señales geométricas específicas.</p>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">Pilar V</span>
+      <h3>Resonancia Sonora</h3>
+      <p>Control del tiempo de reverberación, la absorción acústica y la frecuencia del silencio interior. El sistema nervioso necesita umbrales sonoros sostenidos para activar los procesos de restauración cognitiva.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"></div>
+
+<!-- METODOLOGÍA -->
+<section class="seccion">
+  <span class="etiqueta">Metodología</span>
+  <h2>Cómo se construye este conocimiento</h2>
+  <p>El sistema de trabajo del Principio de Configuración Recíproca no emerge de la especulación. Se construye desde la práctica clínica del espacio: la observación sistemática, durante más de tres décadas, de cómo los mismos patrones de intervención producen respuestas fisiológicas y emocionales consistentes en personas con perfiles radicalmente distintos.</p>
+
+  <ol class="metodologia-lista">
+    <li>
+      <div>
+        <strong>Observación inicial no dirigida</strong>
+        <p>Antes de cualquier intervención, se documenta el comportamiento espontáneo del habitante en el espacio: zonas evitadas, posturas adoptadas, patrones de uso real frente a uso declarado. El cuerpo sabe lo que la mente aún no ha articulado.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Diagnóstico de los cinco vectores</strong>
+        <p>Evaluación sistemática de los parámetros medibles en cada uno de los cinco pilares. La luz se mide. El tiempo de reverberación se mide. La carga visual se cuantifica. El rigor científico no está reñido con la sensibilidad.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Hipótesis de intervención</strong>
+        <p>A partir del diagnóstico, se formula una hipótesis: qué correcciones, en qué orden y con qué intensidad, deberían modificar la conversación entre el espacio y el sistema nervioso del habitante.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Intervención y observación longitudinal</strong>
+        <p>La corrección se implementa y se observa a lo largo del tiempo. Los casos documentados en este sitio son el archivo vivo de ese proceso. No hay teoría que no haya pasado por la prueba del espacio real.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<div class="separador"></div>
+
+<!-- CONCLUSIÓN -->
+<div class="conclusion">
+  <div class="seccion">
+    <span class="etiqueta">Conclusión</span>
+    <h2>Una disciplina que aún no tiene nombre propio</h2>
+    <p>La intersección entre neurociencia, cronobiología, psicología ambiental y diseño interior es un territorio que la academia está comenzando a cartografiar y que la práctica profesional lleva décadas habitando sin mapa.</p>
+    <p>El Principio de Configuración Recíproca es una propuesta de nomenclatura para ese territorio. No pretende ser definitivo. Pretende ser útil: ofrecer un marco que permita a arquitectos, interioristas, investigadores y habitantes pensar juntos sobre algo que ya ocurre, lo nombren o no.</p>
+    <p>El espacio y el sistema nervioso llevan negociando desde que el ser humano construyó su primer refugio. Ya es hora de que esa negociación se haga de forma consciente, informada y rigurosa.</p>
+    <p>Eso es lo que este sitio intenta documentar.</p>
+  </div>
+</div>
+
+<!-- FIRMA -->
+<div class="firma">
+  <div class="firma-linea"></div>
+  <div class="firma-nombre">Mar Gil</div>
+  <div class="firma-titulo">especialista · Método MarGil · Corrección Biológica del Espacio</div>
+  <div class="firma-axioma">"El hogar debería cuidar de quien vive dentro."</div>
+</div>
+
+<!-- CTA PUENTE — autoridad a servicio -->
+<div class="cta-puente">
+  <p>Si este sistema de trabajo resuena con lo que vives en tu espacio, el Método MarGil tiene una aplicación práctica para cada uno de los cinco vectores.</p>
+  <a href="https://metodomargil.com" class="cta-link">Explorar el Método aplicado → metodomargil.com</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Mar Gil · margil.es</span>
+  <span>Investigación · Corrección Biológica del Espacio</span>
+</footer>
+
+</body>
+</html>
