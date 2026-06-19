@@ -1,14 +1,55 @@
 RewriteEngine On
 
-# Quitar extensión .html de las URLs
+# ── HTTPS ────────────────────────────────────────────────────────────
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ── WWW → sin www ─────────────────────────────────────────────────────
+RewriteCond %{HTTP_HOST} ^www\.margil\.es [NC]
+RewriteRule ^(.*)$ https://margil.es/$1 [R=301,L]
+
+# ── URLs sin extensión .html ───────────────────────────────────────────
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [L]
 
-# Redirigir www a sin www
-RewriteCond %{HTTP_HOST} ^www\.margil\.es [NC]
-RewriteRule ^(.*)$ https://margil.es/$1 [R=301,L]
+# ── Redirigir /investigacion/ antiguo → /articulos/ ───────────────────
+RewriteRule ^investigacion/(.*)$ /articulos/$1 [R=301,L]
 
-# Forzar HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# ── COMPRESIÓN GZIP ───────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+  AddOutputFilterByType DEFLATE font/woff font/woff2 font/ttf
+</IfModule>
+
+# ── CACHÉ DEL NAVEGADOR ───────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                "access plus 1 hour"
+  ExpiresByType text/css                 "access plus 1 year"
+  ExpiresByType application/javascript   "access plus 1 year"
+  ExpiresByType image/svg+xml            "access plus 1 year"
+  ExpiresByType image/jpeg               "access plus 1 year"
+  ExpiresByType image/png                "access plus 1 year"
+  ExpiresByType image/webp               "access plus 1 year"
+  ExpiresByType font/woff2               "access plus 1 year"
+  ExpiresByType font/woff                "access plus 1 year"
+  ExpiresByType text/xml                 "access plus 1 day"
+</IfModule>
+
+# ── CABECERAS DE SEGURIDAD ────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ── TIPOS MIME ────────────────────────────────────────────────────────
+AddType image/svg+xml .svg
+AddType font/woff2 .woff2
+AddType font/woff .woff
+AddType application/manifest+json .webmanifest

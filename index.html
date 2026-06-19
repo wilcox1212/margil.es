@@ -6,6 +6,27 @@
 <title>Mar Gil — especialista en Corrección Biológica del Espacio</title>
 <link rel="canonical" href="https://margil.es/">
 <meta name="description" content="Mar Gil investiga la relación entre el espacio habitado y el sistema nervioso humano. Creadora del Principio de Configuración Recíproca y del Método MarGil.">
+<meta name="author" content="Mar Gil">
+<meta name="robots" content="index, follow">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://margil.es/">
+<meta property="og:title" content="Mar Gil — especialista en Corrección Biológica del Espacio">
+<meta property="og:description" content="Mar Gil investiga la relación entre el espacio habitado y el sistema nervioso humano. Creadora del Principio de Configuración Recíproca y del Método MarGil.">
+<meta property="og:image" content="https://margil.es/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mar Gil — Corrección Biológica del Espacio">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Mar Gil · Corrección Biológica del Espacio">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mar Gil — especialista en Corrección Biológica del Espacio">
+<meta name="twitter:description" content="Mar Gil investiga la relación entre el espacio habitado y el sistema nervioso humano. Creadora del Principio de Configuración Recíproca y del Método MarGil.">
+<meta name="twitter:image" content="https://margil.es/og.jpg">
+<!-- Favicon -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -284,11 +305,15 @@
     margin-top: 3rem;
   }
   .libro {
+    display: block;
+    text-decoration: none;
+    color: inherit;
     border: 1px solid var(--arena);
     padding: 2rem;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    cursor: pointer;
   }
-  .libro:hover { border-color: var(--acento); background: var(--pergamino); }
+  .libro:hover { border-color: var(--acento); background: var(--pergamino); transform: translateY(-2px); }
   .libro-num {
     font-size: 0.62rem;
     letter-spacing: 0.2em;
@@ -397,7 +422,40 @@
   }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Mar Gil","url":"https://margil.es","description":"Corrección Biológica del Espacio. Treinta años de práctica e investigación aplicada.","author":{"@type":"Person","name":"Mar Gil","url":"https://margil.es/mar-gil"}}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://margil.es/#website",
+      "name": "Mar Gil",
+      "url": "https://margil.es",
+      "description": "Corrección Biológica del Espacio. Treinta años de práctica e investigación aplicada.",
+      "inLanguage": "es",
+      "publisher": {"@id": "https://margil.es/#person"}
+    },
+    {
+      "@type": "Person",
+      "@id": "https://margil.es/#person",
+      "name": "Mar Gil",
+      "url": "https://margil.es/mar-gil",
+      "description": "Especialista en Corrección Biológica del Espacio. Creadora del Principio de Configuración Recíproca y del Método MarGil.",
+      "jobTitle": "Investigadora en Corrección Biológica del Espacio",
+      "knowsAbout": ["neurociencia del espacio", "corrección biológica del espacio", "sistema nervioso", "bienestar en el hogar"],
+      "sameAs": ["https://metodomargil.com"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://margil.es/#webpage",
+      "url": "https://margil.es/",
+      "name": "Mar Gil — especialista en Corrección Biológica del Espacio",
+      "description": "Mar Gil investiga la relación entre el espacio habitado y el sistema nervioso humano. Creadora del Principio de Configuración Recíproca y del Método MarGil.",
+      "isPartOf": {"@id": "https://margil.es/#website"},
+      "about": {"@id": "https://margil.es/#person"},
+      "inLanguage": "es"
+    }
+  ]
+}
 </script>
 </head>
 <body>
@@ -481,24 +539,24 @@
     <span class="etiqueta">Biblioteca MarGil</span>
     <h2>Tres libros.<br>Un mismo territorio.</h2>
     <div class="libros-grid">
-      <div class="libro">
+      <a class="libro" href="https://amzn.eu/d/0dwPG8hO" target="_blank" rel="noopener noreferrer">
         <span class="libro-num">Vol. I · 2025</span>
         <h3>Arquitectura Sensorial Aplicada</h3>
         <p class="libro-sub">Manual técnico-profesional</p>
         <p>El protocolo completo del Método MarGil para profesionales del espacio. De la teoría a la intervención medible.</p>
-      </div>
-      <div class="libro">
+      </a>
+      <a class="libro" href="https://amzn.eu/d/00dPERRJ" target="_blank" rel="noopener noreferrer">
         <span class="libro-num">Vol. II · 2025</span>
         <h3>Humanizar el Espacio</h3>
         <p class="libro-sub">Para quien vive dentro</p>
         <p>La pregunta que nadie se hace: ¿tu casa te cuida? Un recorrido por los cinco vectores de bienestar espacial para el habitante no técnico.</p>
-      </div>
-      <div class="libro">
+      </a>
+      <a class="libro" href="https://amzn.eu/d/096BQ7JY" target="_blank" rel="noopener noreferrer">
         <span class="libro-num">Vol. III · 2025</span>
         <h3>Un mar de telas</h3>
         <p class="libro-sub">Viaje por el Mediterráneo · Vol. I: Las Baleares</p>
         <p>Cada isla mediterránea tiene una tradición textil. Cada tradición textil tiene algo que decirle al sistema nervioso. Un libro de viajes con mirada de interiorista.</p>
-      </div>
+      </a>
     </div>
   </div>
 </section>

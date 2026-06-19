@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /hola
+Disallow: /ecuacion-visual-v2
+
+Sitemap: https://margil.es/sitemap.xml
