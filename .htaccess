@@ -1,10 +1,17 @@
 RewriteEngine On
 
-# ── HTTPS ────────────────────────────────────────────────────────────
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# ── Bloquea acceso directo a archivos sensibles ────────────────────────
+<FilesMatch "^\.env|\.git">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
 
-# ── WWW → sin www ─────────────────────────────────────────────────────
+# ── Páginas antiguas eliminadas (spam del dueño anterior) — 410 Gone ──
+Redirect gone /reloj-garmin-7
+Redirect gone /nuestro-espacio
+
+# ── HTTPS + WWW → https://margil.es en un solo salto ──────────────────
+RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.margil\.es [NC]
 RewriteRule ^(.*)$ https://margil.es/$1 [R=301,L]
 
