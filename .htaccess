@@ -9,6 +9,8 @@ RewriteEngine On
 # ── Páginas antiguas eliminadas (spam del dueño anterior) — 410 Gone ──
 Redirect gone /reloj-garmin-7
 Redirect gone /nuestro-espacio
+Redirect gone /pintura-eggshell-cascara-de-huevo
+Redirect gone /origen-de-las-baldosas-hidraulicas
 
 # ── HTTPS + WWW → https://margil.es en un solo salto ──────────────────
 RewriteCond %{HTTPS} off [OR]
