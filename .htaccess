@@ -17,6 +17,11 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.margil\.es [NC]
 RewriteRule ^(.*)$ https://margil.es/$1 [R=301,L]
 
+# ── /articulos → articulos.html (existe también un directorio articulos/
+#    con los posts individuales, sin index — sin esta regla, /articulos
+#    coincide con el directorio y Apache devuelve 403) ─────────────────
+RewriteRule ^articulos/?$ articulos.html [L]
+
 # ── URLs sin extensión .html ───────────────────────────────────────────
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
